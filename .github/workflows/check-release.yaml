@@ -31,5 +31,5 @@ jobs:
     steps:
         - uses: actions/checkout@master
         - name: run example in folder
-        - run: test.R
-        working-directory: ${{env.working-directory}}
+          run: test.R
+          working-directory: ${{env.working-directory}}
