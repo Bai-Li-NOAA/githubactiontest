@@ -24,7 +24,7 @@ jobs:
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}
 
-  Run example:
+  Run-example:
     runs-on: macOS-latest
     env:
         working-directory: ./example
