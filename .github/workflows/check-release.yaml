@@ -26,6 +26,6 @@ jobs:
 
       - name: Show testthat output
         if: always()
-        run: Rscript -e 'print("hello")'
+        run: Rscript -e 'test.R'
 
 
