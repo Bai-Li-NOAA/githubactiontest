@@ -24,12 +24,9 @@ jobs:
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}
 
-  Run-example:
-    runs-on: macOS-latest
-    env:
-        working-directory: ./example
-    steps:
-        - uses: actions/checkout@master
-        - name: run example in folder
-          run: test.R
-          working-directory: ${{env.working-directory}}
+      - name: Show testthat output
+        if: always()
+        run: find check -name 'test.Rout*' -exec cat '{}' \; || true
+        shell: bash
+
+
