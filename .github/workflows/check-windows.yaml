@@ -14,7 +14,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses:
       - uses: r-lib/actions/setup-r@master
         with:
           r-version: '3.5'
@@ -22,6 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           install.packages(c("processx", "remotes", "rcmdcheck"), type="binary")
+          install.packages("devtools")
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
 
