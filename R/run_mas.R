@@ -1,13 +1,18 @@
 run_mas = function(maindir=maindir, subdir="MAS", om_sim_num=NULL){
-  # if(!("RMAS" %in% installed.packages()[,"Package"])) {
-  #   remotes::install_github("nmfs-fish-tools/RMAS")
-  # }
-  
+
+  setwd(maindir)
+  setwd("..")
+  setwd("..")
+  wd <- getwd()
+
+  download.file(url = "https://github.com/nmfs-fish-tools/RMAS/archive/master.zip", destfile = file.path(wd, "RMAS-master.zip"))
+  unzip(zipfile = "RMAS-master.zip")
+  rmas_dir <- paste(wd, "/RMAS-master/src/", sep="")
+
   list_of_packages = c("Rcpp", "jsonlite", "callr")
   missing_packages = list_of_packages[!(list_of_packages %in% installed.packages()[,"Package"])]
   if(length(missing_packages)) install.packages(missing_packages)
 
-  library(RMAS)
   library(Rcpp)
   library(jsonlite)
   library(callr)
@@ -17,10 +22,10 @@ run_mas = function(maindir=maindir, subdir="MAS", om_sim_num=NULL){
   sapply(1:om_sim_num, function(x) dir.create(file.path(maindir, "output", subdir, paste("s", x, sep=""))))
 
   for (om_sim in 1:om_sim_num){
-    devtools::load_all(rmas_dir)
+    load(file=file.path(maindir, "output", "OM", paste("OM", om_sim, ".RData", sep="")))
 
     #load the r4mas module
-    load(file=file.path(maindir, "output", "OM", paste("OM", om_sim, ".RData", sep="")))
+    devtools::load_all(rmas_dir)
     r4mas = Module("rmas", dyn.load(paste(rmas_dir, "RMAS", .Platform$dynlib.ext, sep = "")))
     nyears=om_input$nyr
     nseasons=1

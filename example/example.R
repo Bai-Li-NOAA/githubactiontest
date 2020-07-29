@@ -108,7 +108,7 @@ run_om(maindir=maindir)
 # run_em(run_em_names=c("AMAK", "ASAP"))
 # run_em(run_em_names=c("BAM"))
 # run_em(run_em_names=c("SS"))
-# run_em(run_em_names=c("MAS"))
+run_em(run_em_names=c("MAS"))
 
 #### Plot comparison outputs
 # generate_plot(em_names = c("MAS"), plot_ncol=1, plot_nrow=1, plot_color = c("orange"))
