@@ -6,7 +6,7 @@ on:
     branches:
       - master
 
-name: windows-test
+name: windows-test-r3.6.3
 
 jobs:
   windows-test:
