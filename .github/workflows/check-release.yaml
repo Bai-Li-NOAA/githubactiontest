@@ -11,6 +11,8 @@ name: R-CMD-check
 jobs:
   R-CMD-check:
     runs-on: macOS-latest
+    env:
+        ./example
     steps:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@master
@@ -18,11 +20,11 @@ jobs:
         run: |
           install.packages(c("remotes", "rcmdcheck"))
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_github("nmfs-fish-tools/RMAS")
         shell: Rscript {0}
       - name: Check
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}
       - name: Example run
-        run: '**/test.R'
+        run: test.R
+        working-directory: ${{env.working-directory}}
         shell: Rscript {0}
