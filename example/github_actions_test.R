@@ -1,18 +1,12 @@
-# remotes::install_github("nmfs-fish-tools/RMAS")
-# library(RMAS)
-
-rmas_dir <- "C:/Users/bai.li/Documents/Github/RMAS-master/src/"
-devtools::load_all(rmas_dir)
-
-setwd("C:/Users/bai.li/Documents/Github/githubactiontest/")
 devtools::load_all()
 ## Need to install packages below:
 ## ASAPplots, r4ss, readxl, RMAS
-maindir <- "C:/Users/bai.li/Documents/Github/githubactiontest/example"
 
-om_sim_num <- 160 # total number of iterations per case
-keep_sim_num <- 100 # number of kept iterations per case
-figure_number <- 10 # number of individual iteration to plot
+maindir <- file.path(getwd(), "example")
+
+om_sim_num <- 3 # total number of iterations per case
+keep_sim_num <- 2 # number of kept iterations per case
+figure_number <- 2 # number of individual iteration to plot
 
 seed_num <- 9924
 

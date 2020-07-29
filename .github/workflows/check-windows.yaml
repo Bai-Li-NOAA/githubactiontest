@@ -6,11 +6,11 @@ on:
     branches:
       - master
 
-name: R-CMD-check
+name: windows-test
 
 jobs:
   R-CMD-check:
-    runs-on: macOS-latest
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -20,8 +20,6 @@ jobs:
         run: |
           install.packages(c("remotes", "rcmdcheck", "devtools"))
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_github("nmfs-fish-tools/RMAS")
-          library(RMAS)
         shell: Rscript {0}
 
       - name: Check
@@ -29,6 +27,6 @@ jobs:
         shell: Rscript {0}
 
       - name: Run example
-        run: Rscript ./example/example.R
+        run: Rscript ./example/github_actions_test.R
 
 
