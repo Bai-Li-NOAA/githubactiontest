@@ -9,7 +9,7 @@ on:
 name: macOS-test
 
 jobs:
-  R-CMD-check:
+  macOS-test:
     runs-on: macOS-latest
 
     steps:

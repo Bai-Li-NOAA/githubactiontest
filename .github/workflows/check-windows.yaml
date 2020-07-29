@@ -9,12 +9,14 @@ on:
 name: windows-test
 
 jobs:
-  R-CMD-check:
+  windows-test:
     runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@master
+        with:
+          r-version: '3.5.1'
 
       - name: Install dependencies
         run: |
