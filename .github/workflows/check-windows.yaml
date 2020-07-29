@@ -22,7 +22,6 @@ jobs:
       - name: Install dependencies
         run: |
           install.packages(c("processx", "remotes", "rcmdcheck"), type="binary")
-          install.packages(c("devtools"))
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
 
