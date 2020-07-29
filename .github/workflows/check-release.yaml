@@ -23,3 +23,7 @@ jobs:
       - name: Check
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}
+      - name: Example run
+        uses: ./example
+        run: example.R
+        shell: Rscript {0}
