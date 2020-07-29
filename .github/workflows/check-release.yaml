@@ -20,6 +20,8 @@ jobs:
         run: |
           install.packages(c("remotes", "rcmdcheck"))
           remotes::install_deps(dependencies = TRUE)
+          remotes::install_github("nmfs-fish-tools/RMAS")
+          library(RMAS)
         shell: Rscript {0}
 
       - name: Check
@@ -27,6 +29,6 @@ jobs:
         shell: Rscript {0}
 
       - name: Show testthat output
-        run: Rscript ./example/test.R
+        run: Rscript ./example/example.R
 
 
