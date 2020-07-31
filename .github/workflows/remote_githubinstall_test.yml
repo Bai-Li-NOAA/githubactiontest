@@ -36,10 +36,8 @@ jobs:
 
       - name: Install RMAS
         run: |
-          install.packages("remotes")
           remotes::install_github("nmfs-fish-tools/RMAS")
           library(RMAS)
         shell: Rscript {0}
 
-      - name: Run example
-        run: Rscript ./example/github_actions_test.R
+      
