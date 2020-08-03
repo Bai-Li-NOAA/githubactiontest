@@ -24,6 +24,9 @@ jobs:
           remotes::install_deps(dependencies = TRUE)
           remotes::install_github("nmfs-fish-tools/RMAS")
           library(RMAS)
+        env:
+          CXX14FLAGS: "-O3 -Wno-unused-variable -Wno-unused-function"
+          CXX14: "g++ -std=c++1y"
         shell: Rscript {0}
 
       - name: Check
