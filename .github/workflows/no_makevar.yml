@@ -22,7 +22,7 @@ jobs:
         run: |
           install.packages(c("processx", "remotes", "rcmdcheck", "devtools"), type="binary")
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_github("nmfs-fish-tools/RMAS")
+          remotes::install_github("Bai-Li-NOAA/RMAS")
           library(RMAS)
         env:
           CXX14FLAGS: "-O3 -Wno-unused-variable -Wno-unused-function"
