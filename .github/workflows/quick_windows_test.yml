@@ -1,11 +1,10 @@
-
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+on: [workflow_dispatch]
+#  push:
+#    branches:
+#      - master
+#  pull_request:
+#    branches:
+#      - master
 
 name: R-CMD-check
 
@@ -20,4 +19,9 @@ jobs:
           install.packages("remotes")
           remotes::install_github("nmfs-fish-tools/RMAS")
           library(RMAS)
+          library(Rcpp)
+          d <- system.file(package = "RMAS")
+          r4mas <- Module("rmas", dyn.load(paste(d,"/libs/x64/RMAS", .Platform$dynlib.ext, sep = "")))
+          input_data <- write_test_data(nyears = 2)
+          print(input_data)
         shell: Rscript {0}
