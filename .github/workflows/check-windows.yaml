@@ -6,7 +6,7 @@ on: [workflow_dispatch]
 #    branches:
 #      - master
 
-name: windows-test
+name: windows-test-long
 
 jobs:
   windows-test:
